@@ -1,25 +1,119 @@
 
-*{
+:root{
 
-    font-family: sans-serif;
+    --blue-color:  #362FBB;
+    --purple-color: #712275;
+    --pink-color: #F97698;
+    --yellow-color: #FFB845;
+    --lightblue-color: #3968CB;
+    --rose-color: #DD517F;
+    --darkpurple-color: #461E52;
+
+}
+
+*,
+*::after,
+*::before{
+
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
+    font-family: 'lobster';
 
+}
+
+body{
+
+    background-color: var(--rose-color);
     
-
 }
 
 
 
 .header{
 
-    padding: 20px;
-    background-color: blueviolet;
+    padding: 10px;
+    background: linear-gradient(to top, var(--purple-color), var(--blue-color) 100%);
+    border-bottom: 3px solid var(--darkpurple-color);
+    
 }
 
 .header > h1 {
 
-    font-size: 100px;
+    font-size: 120px;
+    font-family: 'lobster';
     text-align: center;
+    color: var(--pink-color);
+    background: linear-gradient(0deg, var(--yellow-color), var(--pink-color) 70%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color:  transparent ;
+
+    
+}
+
+.mainContainer{
+
+    padding: 0 20px;
+
+}
+
+.displayMessage{
+
+    font-size: 50px;
+    text-align: center;
+    padding: 20px 0;
+    color: var(--yellow-color);
+    
+
+}
+
+.board{
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 454px;
+    height: 454px;
+    border: 2px solid var(--darkpurple-color) ;
+    margin: 0px auto;
+
+}
+
+.piece{
+
+    width: 150px;
+    height: 150px;
+    border: 1px solid var(--darkpurple-color);
+    background-color: var(--lightblue-color);
+    line-height: 1.6;
+    text-align: center;
+
+
+
+}
+
+.piece:hover{
+
+    background-color: #2c519f;
+
+}
+
+.bottomButtons{
+
+
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+
+}
+
+.restart{
+
+
+    padding: 10px 20px;
+    border: 3px solid var(--darkpurple-color);
+    border-radius: 8px;
+    background-color: var(--blue-color);
+    color: var(--yellow-color);
+    font-size: 50px;
 
 }
