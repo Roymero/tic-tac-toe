@@ -7,7 +7,12 @@ const player = (name, symbol) =>{
 
 const gameBoard = (gameBoard) => {
 
-    gameBoard = ["", "", "", "", "", "", "", "", ""]
+    gameBoard = ["", "", "", "", "", "", "", "", ""];
+
+    const setPiece = (index, symbol) => {
+
+        
+    }
 
     return {gameBoard}
 
