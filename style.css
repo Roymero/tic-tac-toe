@@ -80,14 +80,17 @@ body{
 
 .piece{
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 150px;
     height: 150px;
     border: 1px solid var(--darkpurple-color);
     background-color: var(--lightblue-color);
     line-height: 1.6;
-    text-align: center;
-
-
+    font-size: 8vh;
+    font-family: 'Varela Round', sans-serif;
+    color: #DD517F;
 
 }
 
