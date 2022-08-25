@@ -1,4 +1,4 @@
-const player = (name, symbol) =>{
+const player = (symbol) =>{
 
 
     const getSymbol = () =>{
@@ -7,71 +7,110 @@ const player = (name, symbol) =>{
     };
 
 
-    return{name, symbol, getSymbol}
+    return{symbol, getSymbol}
 
 }
 
-const gameBoard = (gameBoard) => {
+const gameBoard = (() => {
 
-    gameBoard = ["", "", "", "", "", "", "", "", ""];
+    board = ["", "", "", "", "", "", "", "", ""];
 
     const setPiece = (index, symbol) => {
 
+        board[index] = symbol;
 
     }
 
-    return {gameBoard}
+    const getPiece = (index) => {
 
-}
+        return board[index]
+    }
+
+    const reset = () => {
+
+        for(let i = 0; i < board.length; i++ ){
+
+            board[i] = ""
+
+        }
+    }
+
+    return {setPiece, getPiece, reset}
+
+})();
 
 const displayController = (() =>{
 
 
     
-    const displayMessage = document.getElementById("displayMessage")
+    const displayMessage = document.getElementById("displayMessage");
+    const fieldElements = document.querySelectorAll(".piece");
+    const restartButton = document.getElementById("restartButton");
+
+
+
+    const updateBoard = () => {
+
+
+        for(let i = 0; i <board.length; i++){
+
+            fieldElements[i].textContent = gameBoard.getPiece(i)
+
+        }
+
+    }
+
+    restartButton.addEventListener("click", ()=>{
+
+        console.log("Larussy")
+        gameBoard.reset();
+        displayController.updateBoard();
     
-
-
-
-
-
-})
-
-
-const gameController = (() =>{
-
-    let count = 1
-    const Player1 = new player('Player 1','X')
-    const Player2 = new player('Player 2', 'O')
-
-
-
-
-
-
-
-
-
-
-})
-
-
-const fieldElements = document.querySelectorAll(".piece");
+    });
 
     fieldElements.forEach((piece)=> 
 
         piece.addEventListener("click", (e)=>{
             
-            console.log(e.target.dataset.index)
-           
-
+            holder = parseInt(e.target.dataset.index)
+            gameBoard.setPiece(holder, "X");
+            displayController.updateBoard();
+          
 
         })
     );
 
 
 
-const restartButton = document.getElementById("restartButton");
+
+
+
+    return{updateBoard}
+
+
+
+})();
+
+
+const gameController = (() =>{
+
+    let count = 1
+    const Player1 = new player('X')
+    const Player2 = new player('O')
+
+
+
+})
+
+
+
+    
+    /* This is how you link grid text and array */
+    /* fieldElements[1].textContent = "X" */
+
+
+
+
 
 
 
