@@ -1,21 +1,18 @@
 const player = (symbol) =>{
 
 
-    const getSymbol = () =>{
+    const getSymbol = () => symbol;
 
-        return symbol
-    };
+    return{getSymbol}
 
-
-    return{symbol, getSymbol}
-
-}
+};
 
 const gameBoard = (() => {
 
     board = ["", "", "", "", "", "", "", "", ""];
 
     const setPiece = (index, symbol) => {
+
 
         board[index] = symbol;
 
@@ -62,7 +59,6 @@ const displayController = (() =>{
 
     restartButton.addEventListener("click", ()=>{
 
-        console.log("Larussy")
         gameBoard.reset();
         displayController.updateBoard();
     
@@ -72,35 +68,83 @@ const displayController = (() =>{
 
         piece.addEventListener("click", (e)=>{
             
-            holder = parseInt(e.target.dataset.index)
-            gameBoard.setPiece(holder, "X");
-            displayController.updateBoard();
-          
+            let holder = parseInt(e.target.dataset.index)
 
+            gameController.playRound(holder);
+            displayController.updateBoard();
+            
+          
         })
     );
 
-
-
-
-
-
     return{updateBoard}
-
-
 
 })();
 
 
 const gameController = (() =>{
 
-    let count = 1
-    const Player1 = new player('X')
-    const Player2 = new player('O')
+    const restartButton = document.getElementById("restartButton");
+
+    var count = 1;
+    const Player1 = player('X');
+    const Player2 = player('O');
+    var gameOver = false;
+
+
+    const playRound = (index) => {
+
+        if(count < 10 || gameOver == true){
+
+            if(gameBoard.getPiece(index) == ""){
+
+                gameBoard.setPiece(index, gameController.getCurrentPlayer());
+               
+            }
+
+            count++
+            console.log(count)
+
+        }
+
+
+    }
+
+    const chickenDinner = () => {
+
+       
 
 
 
-})
+
+    }
+
+    const getCurrentPlayer = () => {
+
+        if(count % 2 == 1){
+
+            return Player1.getSymbol();
+
+        }
+
+        else{
+
+            return Player2.getSymbol();
+        }
+
+    }
+
+
+    restartButton.addEventListener("click", ()=>{
+
+      count = 1
+    
+    });
+
+
+    return{playRound, chickenDinner, getCurrentPlayer}
+
+})();
 
 
 
