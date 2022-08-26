@@ -48,21 +48,19 @@ const displayController = (() =>{
 
     const updateBoard = () => {
 
-
         for(let i = 0; i <board.length; i++){
 
             fieldElements[i].textContent = gameBoard.getPiece(i);
             displayMessage.textContent = "Player " + gameController.getCurrentPlayer() + "'s Turn";
         }
 
-    }
+    };
 
     const setWinner = (symbol) => {
 
         displayMessage.textContent = "Player " + symbol + " is the winner!";
 
-
-    }
+    };
 
     restartButton.addEventListener("click", ()=>{
 
@@ -81,9 +79,7 @@ const displayController = (() =>{
 
             gameController.playRound(holder);
             displayController.updateBoard();
-            gameController.chickenDinner();
-            
-            
+            gameController.chickenDinner();    
           
         })
     );
@@ -96,7 +92,7 @@ const displayController = (() =>{
 const gameController = (() =>{
 
     const restartButton = document.getElementById("restartButton");
-
+    
     var count = 1;
     const Player1 = player('X');
     const Player2 = player('O');
