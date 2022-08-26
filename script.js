@@ -40,7 +40,7 @@ const displayController = (() =>{
 
 
     
-    const displayMessage = document.getElementById("displayMessage");
+    const displayMessage = document.getElementById("display");
     const fieldElements = document.querySelectorAll(".piece");
     const restartButton = document.getElementById("restartButton");
 
@@ -52,8 +52,15 @@ const displayController = (() =>{
         for(let i = 0; i <board.length; i++){
 
             fieldElements[i].textContent = gameBoard.getPiece(i)
-
+            displayMessage.textContent = "Player " + gameController.getCurrentPlayer() + "'s Turn";
         }
+
+    }
+
+    const setWinner = (symbol) => {
+
+        displayMessage.textContent = "Player " + symbol + " is the winner!";
+
 
     }
 
@@ -61,6 +68,7 @@ const displayController = (() =>{
 
         gameBoard.reset();
         displayController.updateBoard();
+        displayMessage.textContent = "Player X's Turn";
     
     });
 
@@ -69,15 +77,18 @@ const displayController = (() =>{
         piece.addEventListener("click", (e)=>{
             
             let holder = parseInt(e.target.dataset.index)
+            console.log(holder)
 
             gameController.playRound(holder);
             displayController.updateBoard();
+            gameController.chickenDinner();
+            
             
           
         })
     );
 
-    return{updateBoard}
+    return{updateBoard, setWinner}
 
 })();
 
@@ -94,30 +105,120 @@ const gameController = (() =>{
 
     const playRound = (index) => {
 
-        if(count < 10 || gameOver == true){
+        if(count < 10 && gameOver == false){
 
             if(gameBoard.getPiece(index) == ""){
 
                 gameBoard.setPiece(index, gameController.getCurrentPlayer());
+                count++
                
             }
-
-            count++
-            console.log(count)
-
         }
 
-
-    }
+    };
 
     const chickenDinner = () => {
 
-       
+        if(gameBoard.getPiece(0) === Player1.getSymbol() && gameBoard.getPiece(1) === Player1.getSymbol() 
+           && gameBoard.getPiece(2) === Player1.getSymbol()){
+
+            gameOver = true
+            displayController.setWinner(Player1.getSymbol())  
+        }
+        else if (gameBoard.getPiece(0) === Player1.getSymbol() && gameBoard.getPiece(3) === Player1.getSymbol() 
+                 && gameBoard.getPiece(6) === Player1.getSymbol()){
+                    
+                gameOver = true
+                displayController.setWinner(Player1.getSymbol())  
+        }
+        else if (gameBoard.getPiece(0) === Player1.getSymbol() && gameBoard.getPiece(4) === Player1.getSymbol() 
+                 && gameBoard.getPiece(8) === Player1.getSymbol()){
+           
+                gameOver = true
+                displayController.setWinner(Player1.getSymbol())  
+        }
+        else if (gameBoard.getPiece(3) === Player1.getSymbol() && gameBoard.getPiece(4) === Player1.getSymbol() 
+                 && gameBoard.getPiece(5) === Player1.getSymbol()){
+           
+                gameOver = true
+                displayController.setWinner(Player1.getSymbol())  
+        }
+        else if (gameBoard.getPiece(6) === Player1.getSymbol() && gameBoard.getPiece(7) === Player1.getSymbol() 
+                 && gameBoard.getPiece(8) === Player1.getSymbol()){
+           
+                gameOver = true
+                displayController.setWinner(Player1.getSymbol())  
+        }
+        else if (gameBoard.getPiece(1) === Player1.getSymbol() && gameBoard.getPiece(4) === Player1.getSymbol() 
+                 && gameBoard.getPiece(7) === Player1.getSymbol()){
+           
+                gameOver = true
+                displayController.setWinner(Player1.getSymbol())  
+        }
+        else if (gameBoard.getPiece(2) === Player1.getSymbol() && gameBoard.getPiece(5) === Player1.getSymbol() 
+                 && gameBoard.getPiece(8) === Player1.getSymbol()){
+           
+                gameOver = true
+                displayController.setWinner(Player1.getSymbol())  
+        }
+        else if (gameBoard.getPiece(2) === Player1.getSymbol() && gameBoard.getPiece(4) === Player1.getSymbol() 
+                 && gameBoard.getPiece(6) === Player1.getSymbol()){
+           
+                gameOver = true
+                displayController.setWinner(Player1.getSymbol())  
+        }
+        
+        if(gameBoard.getPiece(0) === Player2.getSymbol() && gameBoard.getPiece(1) === Player2.getSymbol() 
+           && gameBoard.getPiece(2) === Player2.getSymbol()){
+
+            gameOver = true
+            displayController.setWinner(Player2.getSymbol())  
+        }
+        else if (gameBoard.getPiece(0) === Player2.getSymbol() && gameBoard.getPiece(3) === Player2.getSymbol() 
+                 && gameBoard.getPiece(6) === Player2.getSymbol()){
+                    
+                gameOver = true
+                displayController.setWinner(Player2.getSymbol())  
+        }
+        else if (gameBoard.getPiece(0) === Player2.getSymbol() && gameBoard.getPiece(4) === Player2.getSymbol() 
+                 && gameBoard.getPiece(8) === Player2.getSymbol()){
+           
+                gameOver = true
+                displayController.setWinner(Player2.getSymbol())  
+        }
+        else if (gameBoard.getPiece(3) === Player2.getSymbol() && gameBoard.getPiece(4) === Player2.getSymbol() 
+                 && gameBoard.getPiece(5) === Player2.getSymbol()){
+           
+                gameOver = true
+                displayController.setWinner(Player2.getSymbol())  
+        }
+        else if (gameBoard.getPiece(6) === Player2.getSymbol() && gameBoard.getPiece(7) === Player2.getSymbol() 
+                 && gameBoard.getPiece(8) === Player2.getSymbol()){
+           
+                gameOver = true
+                displayController.setWinner(Player2.getSymbol())  
+        }
+        else if (gameBoard.getPiece(1) === Player2.getSymbol() && gameBoard.getPiece(4) === Player2.getSymbol() 
+                 && gameBoard.getPiece(7) === Player2.getSymbol()){
+           
+                gameOver = true
+                displayController.setWinner(Player2.getSymbol())  
+        }
+        else if (gameBoard.getPiece(2) === Player2.getSymbol() && gameBoard.getPiece(5) === Player2.getSymbol() 
+                 && gameBoard.getPiece(8) === Player2.getSymbol()){
+           
+                gameOver = true
+                displayController.setWinner(Player2.getSymbol())  
+        }
+        else if (gameBoard.getPiece(2) === Player2.getSymbol() && gameBoard.getPiece(4) === Player2.getSymbol() 
+                 && gameBoard.getPiece(6) === Player2.getSymbol()){
+           
+                gameOver = true
+                displayController.setWinner(Player2.getSymbol())  
+        }
 
 
-
-
-    }
+    };
 
     const getCurrentPlayer = () => {
 
@@ -132,12 +233,12 @@ const gameController = (() =>{
             return Player2.getSymbol();
         }
 
-    }
-
+    };
 
     restartButton.addEventListener("click", ()=>{
 
       count = 1
+      gameOver = false
     
     });
 
