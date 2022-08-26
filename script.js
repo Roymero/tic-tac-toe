@@ -92,7 +92,7 @@ const displayController = (() =>{
 const gameController = (() =>{
 
     const restartButton = document.getElementById("restartButton");
-    
+
     var count = 1;
     const Player1 = player('X');
     const Player2 = player('O');
@@ -243,11 +243,6 @@ const gameController = (() =>{
 
 })();
 
-
-
-    
-    /* This is how you link grid text and array */
-    /* fieldElements[1].textContent = "X" */
 
 
 
