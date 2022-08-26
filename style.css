@@ -47,7 +47,6 @@ body{
     background: linear-gradient(0deg, var(--yellow-color), var(--pink-color) 70%);
     -webkit-background-clip: text;
     -webkit-text-fill-color:  transparent ;
-
     
 }
 
@@ -63,7 +62,6 @@ body{
     text-align: center;
     padding: 20px 0;
     color: var(--yellow-color);
-    
 
 }
 
@@ -102,7 +100,6 @@ body{
 
 .bottomButtons{
 
-
     display: flex;
     justify-content: center;
     padding: 30px;
@@ -110,7 +107,6 @@ body{
 }
 
 .restart{
-
 
     padding: 10px 20px;
     border: 3px solid var(--darkpurple-color);
@@ -124,8 +120,58 @@ body{
 .restart:hover{
 
     background-color: #252085;
- 
+
+}
+
+/* Media Queries*/
+
+@media (max-width: 660px){
+
+    .header > h1 {
+
+        font-size: 60px;
+    }
+
+    .displayMessage{
+
+        font-size: 40px;
+    }
+
+    .restart{
+
+        font-size: 40px;
+    }
+
+    .board{
+
+        width: 304px;
+        height: 304px;
+    }
+
+    .piece{
+
+        width: 100px;
+        height: 100px;
+        font-size: 70px;
+    }
+}
 
 
+@media (max-width: 420px){
 
+    .header > h1 {
+        
+        font-size: 50px;
+    }
+
+
+    .displayMessage{
+
+        font-size: 36px;
+    }
+
+    .restart{
+
+        font-size: 36px;
+    }
 }

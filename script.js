@@ -51,7 +51,7 @@ const displayController = (() =>{
 
         for(let i = 0; i <board.length; i++){
 
-            fieldElements[i].textContent = gameBoard.getPiece(i)
+            fieldElements[i].textContent = gameBoard.getPiece(i);
             displayMessage.textContent = "Player " + gameController.getCurrentPlayer() + "'s Turn";
         }
 
